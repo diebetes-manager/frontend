@@ -1,11 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 
-const Dashboard = () => {
-  return (
-    <div>
-      <h1>dash</h1>
-    </div>
-  );
-};
-
-export default Dashboard;
+export default class Dashboard extends Component {
+  render() {
+    return (
+      <div>
+        <div className="App">
+          <h1>Blood sugar level</h1>
+        </div>
+      </div>
+    );
+  }
+}

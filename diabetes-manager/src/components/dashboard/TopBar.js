@@ -1,40 +1,72 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import { Route, Link } from "react-router-dom";
 
 const styles = {
   root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginLeft: -18,
-    marginRight: 10
+    background: " #2592F2",
+    top: 0,
+    width: "100%",
+    overflow: "hidden",
+    position: "fixed"
   }
 };
 
-function TopBar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar variant="dense">
-          <IconButton
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="Menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" color="inherit" />
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+class TopBar extends React.Component {
+  state = {
+    value: "home"
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
+  render() {
+    const { classes } = this.props;
+    const { value } = this.state;
+
+    return (
+      <div>
+        <BottomNavigation
+          value={value}
+          onChange={this.handleChange}
+          className={classes.root}
+        >
+          <BottomNavigationAction
+            label="Home"
+            value="home"
+            icon={<i className="fas fa-home fa-2x nav" />}
+            component={Link}
+            to="/dashboard"
+          />
+          <BottomNavigationAction
+            label="Overview"
+            value="overview"
+            icon={<i className="fas fa-eye fa-2x nav" />}
+            component={Link}
+            to="/overview"
+          />
+          <BottomNavigationAction
+            label="Health"
+            value="health"
+            icon={<i className="fas fa-shield-alt fa-2x nav" />}
+            component={Link}
+            to="/health"
+          />
+          <BottomNavigationAction
+            label="Profile"
+            value="profile"
+            icon={<i className="fas fa-user fa-2x nav" />}
+            component={Link}
+            to="/profile"
+          />
+        </BottomNavigation>
+      </div>
+    );
+  }
 }
 
 export default withStyles(styles)(TopBar);

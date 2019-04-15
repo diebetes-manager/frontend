@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const styles = theme => ({
   button: {
@@ -35,6 +36,14 @@ class Profile extends Component {
         <p>weight: {weight}</p>
         <Button variant="contained" color="primary" className={classes.button}>
           Edit
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          className={classes.button}
+        >
+          Sign Out
+          <DeleteIcon className={classes.rightIcon} />
         </Button>
       </div>
     );

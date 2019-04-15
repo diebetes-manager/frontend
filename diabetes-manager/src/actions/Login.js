@@ -8,6 +8,7 @@ export const loggedIn = creds => dispatch => {
   dispatch({
     type: FETCHING_LOGIN
   });
+  localStorage.setItem("token", "hi");
   dispatch({
     type: SUCCESS_LOGIN
   });

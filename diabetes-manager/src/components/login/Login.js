@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { loggedIn } from "../../actions";
 
 class Login extends Component {
   state = {
@@ -17,11 +19,26 @@ class Login extends Component {
     });
   };
 
+  submitChanges = e => {
+    e.preventDefault();
+    this.props.loggedIn(this.state.auth);
+
+    this.setState({
+      auth: {
+        username: "",
+        password: ""
+      }
+    });
+  };
+
   render() {
+    if (this.props.isLoggedIn) {
+      this.props.history.push("/dashboard");
+    }
     const { username, password } = this.state;
     return (
       <div>
-        <form>
+        <form onSubmit={this.submitChanges}>
           <input
             onChange={this.handleChanges}
             placeholder="enter username..."
@@ -43,4 +60,11 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  isLoggedIn: state.loginReducers.isLoggedIn
+});
+
+export default connect(
+  mapStateToProps,
+  { loggedIn }
+)(Login);

@@ -42,6 +42,13 @@ class BottomNav extends React.Component {
             component={Link}
             to="/dashboard"
           />
+          <BottomNavigationAction
+            label="Overview"
+            value="overview"
+            icon={<i className="fas fa-eye fa-2x nav" />}
+            component={Link}
+            to="/overview"
+          />
 
           <BottomNavigationAction
             label="Profile"

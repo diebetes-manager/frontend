@@ -1,0 +1,20 @@
+export const data = [
+  { id: 1, timestamp: "2019-02-01T05:32:46Z", amount: 104 },
+  { id: 2, timestamp: "2019-02-01T02:04:52Z", amount: 111 },
+  { id: 3, timestamp: "2019-02-01T03:49:53Z", amount: 113 },
+  { id: 4, timestamp: "2019-02-01T03:32:35Z", amount: 114 },
+  { id: 5, timestamp: "2019-02-01T00:00:21Z", amount: 107 },
+  { id: 6, timestamp: "2019-02-01T00:24:51Z", amount: 111 },
+  { id: 7, timestamp: "2019-02-01T10:20:38Z", amount: 110 },
+  { id: 8, timestamp: "2019-02-01T05:54:37Z", amount: 114 },
+  { id: 9, timestamp: "2019-02-01T04:31:07Z", amount: 120 },
+  { id: 10, timestamp: "2019-02-01T06:57:07Z", amount: 104 },
+  { id: 11, timestamp: "2019-02-01T07:49:56Z", amount: 107 },
+  { id: 12, timestamp: "2019-02-01T09:50:29Z", amount: 102 },
+  { id: 13, timestamp: "2019-02-01T05:25:23Z", amount: 105 },
+  { id: 14, timestamp: "2019-02-01T04:29:24Z", amount: 125 },
+  { id: 15, timestamp: "2019-02-01T07:17:24Z", amount: 107 },
+  { id: 16, timestamp: "2019-02-01T10:24:32Z", amount: 117 },
+  { id: 17, timestamp: "2019-02-01T05:28:27Z", amount: 113 },
+  { id: 18, timestamp: "2019-02-01T01:20:14Z", amount: 108 }
+];

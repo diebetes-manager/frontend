@@ -56,6 +56,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   {}
 )(withStyles(styles)(Profile));

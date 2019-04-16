@@ -1,8 +1,9 @@
-import { GETTING_USER_DATA } from "../actions";
+import { GETTING_USER_DATA, SUCCESS_SUGAR_LEVELS } from "../actions";
 const intitalState = {
   updatingUserInfo: false,
   gettingUserInfo: false,
-  userInfo: {}
+  userInfo: {},
+  sugarLevels: []
 };
 
 export const dashboardReducers = (state = intitalState, action) => {
@@ -10,12 +11,12 @@ export const dashboardReducers = (state = intitalState, action) => {
     case GETTING_USER_DATA:
       return {
         gettingUserInfo: true,
-        userInfo: {
-          name: "joseph",
-          age: 21,
-          height: "5 ft 9 in",
-          weight: "140lbs"
-        }
+        userInfo: { name: "joseph" }
+      };
+    case SUCCESS_SUGAR_LEVELS:
+      return {
+        ...state,
+        sugarLevels: action.payload
       };
     default:
       return state;

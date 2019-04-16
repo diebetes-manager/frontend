@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Media from "react-media";
 import { Line, Pie } from "react-chartjs-2";
 
-export default class Dashboard extends Component {
+import { getData } from "../../actions";
+
+class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,13 +30,24 @@ export default class Dashboard extends Component {
             data: [98, 104, 95, 130, 116, 108, 110, 87, 98, 101, 92, 89],
             fill: true, // Don't fill area under the line
             borderColor: "#2592F2" // Line color
+          },
+          {
+            label: "Something else",
+            data: [7, 4, 7, 7, 54, 87, 46, 87, 7, 7, 7, 9],
+            fill: false, // Don't fill area under the line
+            borderColor: "#2592F2" // Line color
           }
         ]
       }
     };
   }
 
+  componentDidMount() {
+    this.props.getData();
+  }
+
   render() {
+    console.log(this.props.data);
     return (
       <div>
         <h1 className="header">Dashboard</h1>
@@ -41,13 +55,17 @@ export default class Dashboard extends Component {
           <Media query="(max-width: 599px)">
             {matches =>
               matches ? (
-                <Line height={300} data={this.state.data} options={{}} />
+                <Line
+                  height={300}
+                  data={this.state.data}
+                  options={{ maintainAspectRatio: true }}
+                />
               ) : (
                 <Line
                   width={500}
                   height={300}
                   data={this.state.data}
-                  options={{}}
+                  options={{ maintainAspectRatio: false }}
                 />
               )
             }
@@ -69,3 +87,12 @@ export default class Dashboard extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  data: state.dashboardReducers.sugarLevels
+});
+
+export default connect(
+  mapStateToProps,
+  { getData }
+)(Dashboard);

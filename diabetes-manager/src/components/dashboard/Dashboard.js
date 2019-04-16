@@ -36,7 +36,7 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Dashboard</h1>
+        <h1 className="header">Dashboard</h1>
         <div className="App desktop">
           <Media query="(max-width: 599px)">
             {matches =>
@@ -53,9 +53,14 @@ export default class Dashboard extends Component {
             }
           </Media>
 
-          <div>
-            <h2>Messages</h2>
+          <div className="side-panel">
+            <h2>Current Status</h2>
             <div className="box">
+              <p>data goes here</p>
+            </div>
+
+            <div className="box">
+              <h2>Messages</h2>
               <li>eat</li>
             </div>
           </div>

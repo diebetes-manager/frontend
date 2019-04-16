@@ -1,9 +1,11 @@
 import { data } from "../3h_bloodsugar";
+import { overallData } from "../7day_bloodsugar";
 
 export const GETTING_USER_DATA = "GETTING_USER_DATA";
 export const UPDATING_USER_DATA = "UPDATING_USER_DATA";
 export const FETCHING_SUGAR_LEVELS = "FETCHING_SUGAR_LEVELS";
 export const SUCCESS_SUGAR_LEVELS = "SUCCESS_SUGAR_LEVELS";
+export const SUCCESS_OVERALL_SUGAR_LEVELS = "SUCCESS_OVERALL_SUGAR_LEVELS";
 export const FAILURE_GETTING_SUGAR_LEVELS = "FAILURE_GETTING_SUGAR_LEVELS";
 
 export const getUser = () => dispatch => {
@@ -17,6 +19,10 @@ export const getData = () => dispatch => {
     dispatch({
       type: SUCCESS_SUGAR_LEVELS,
       payload: data
+    });
+    dispatch({
+      type: SUCCESS_OVERALL_SUGAR_LEVELS,
+      payload: overallData
     });
   } catch (err) {
     dispatch({

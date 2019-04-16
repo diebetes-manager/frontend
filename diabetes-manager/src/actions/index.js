@@ -10,6 +10,7 @@ export {
   FETCHING_SUGAR_LEVELS,
   SUCCESS_SUGAR_LEVELS,
   FAILURE_GETTING_SUGAR_LEVELS,
+  SUCCESS_OVERALL_SUGAR_LEVELS,
   getUser,
   getData
 } from "./dashboardData";

@@ -1,9 +1,18 @@
-import { GETTING_USER_DATA, SUCCESS_SUGAR_LEVELS } from "../actions";
+import {
+  GETTING_USER_DATA,
+  SUCCESS_SUGAR_LEVELS,
+  SUCCESS_OVERALL_SUGAR_LEVELS
+} from "../actions";
+
 const intitalState = {
   updatingUserInfo: false,
   gettingUserInfo: false,
   userInfo: {},
-  sugarLevels: []
+  overallData: [],
+  overallSugarLevels: [],
+  data: [],
+  bloodSugarLevels: [],
+  times: []
 };
 
 export const dashboardReducers = (state = intitalState, action) => {
@@ -16,7 +25,15 @@ export const dashboardReducers = (state = intitalState, action) => {
     case SUCCESS_SUGAR_LEVELS:
       return {
         ...state,
-        sugarLevels: action.payload
+        data: action.payload,
+        bloodSugarLevels: action.payload.map(data => data.amount),
+        times: action.payload.map(data => data.timestamp)
+      };
+    case SUCCESS_OVERALL_SUGAR_LEVELS:
+      return {
+        ...state,
+        overallData: action.payload,
+        overallSugarLevels: action.payload.map(data => data.amount)
       };
     default:
       return state;

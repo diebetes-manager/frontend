@@ -6,35 +6,21 @@ import { Line, Pie } from "react-chartjs-2";
 import { getData } from "../../actions";
 
 class Dashboard extends Component {
+  componentDidMount() {
+    this.props.getData();
+  }
+
   constructor(props) {
     super(props);
+
     this.state = {
       data: {
-        labels: [
-          "7:30 AM",
-          "8:00 AM",
-          "8:30 AM",
-          "9:00 AM",
-          "9:30 AM",
-          "10:00 AM",
-          "10:30 AM",
-          "11:00 AM",
-          "11:30 AM",
-          "12:00 PM",
-          "12:30 PM",
-          "1:00 PM"
-        ],
+        labels: this.props.times,
         datasets: [
           {
             label: "Blood Sugar Levels",
-            data: [98, 104, 95, 130, 116, 108, 110, 87, 98, 101, 92, 89],
+            data: this.props.data,
             fill: true, // Don't fill area under the line
-            borderColor: "#2592F2" // Line color
-          },
-          {
-            label: "Something else",
-            data: [7, 4, 7, 7, 54, 87, 46, 87, 7, 7, 7, 9],
-            fill: false, // Don't fill area under the line
             borderColor: "#2592F2" // Line color
           }
         ]
@@ -42,12 +28,9 @@ class Dashboard extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.getData();
-  }
-
   render() {
     console.log(this.props.data);
+    console.log(this.props.times);
     return (
       <div>
         <h1 className="header">Dashboard</h1>
@@ -89,7 +72,9 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.dashboardReducers.sugarLevels
+  data: state.dashboardReducers.bloodSugarLevels,
+  times: state.dashboardReducers.times,
+  overallSugarLevels: state.dashboardReducers.overallSugarLevels
 });
 
 export default connect(

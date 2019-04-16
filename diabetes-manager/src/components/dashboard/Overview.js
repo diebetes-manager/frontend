@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { getData } from "../../actions";
 import { Line, Pie } from "react-chartjs-2";
 
 class Overview extends React.Component {
@@ -6,11 +8,11 @@ class Overview extends React.Component {
     super(props);
     this.state = {
       data: {
-        labels: ["Diet", "Exercise", "Blood sugar management"],
+        labels: ["Blood sugar management"],
         datasets: [
           {
             label: "Blood Sugar Levels",
-            data: [33, 33, 33],
+            data: this.props.overallSugarLevels,
             fill: true, // Don't fill area under the line
             borderColor: "#2592F2" // Line color
           }
@@ -27,4 +29,14 @@ class Overview extends React.Component {
     );
   }
 }
-export default Overview;
+
+const mapStateToProps = state => ({
+  data: state.dashboardReducers.bloodSugarLevels,
+  times: state.dashboardReducers.times,
+  overallSugarLevels: state.dashboardReducers.overallSugarLevels
+});
+
+export default connect(
+  mapStateToProps,
+  { getData }
+)(Overview);

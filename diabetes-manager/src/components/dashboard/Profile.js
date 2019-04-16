@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -25,10 +26,11 @@ class Profile extends Component {
     };
   }
   render() {
+    console.log(this.props.user);
     const { classes } = this.props;
     const { name, age, height, weight } = this.state.user;
     return (
-      <div>
+      <div className="center">
         <h1>Profile</h1>
         <p>name: {name}</p>
         <p>age: {age}</p>
@@ -49,4 +51,11 @@ class Profile extends Component {
     );
   }
 }
-export default withStyles(styles)(Profile);
+const mapStateToProps = state => ({
+  user: state.dashboardReducers.userInfo
+});
+
+export default connect(
+  null,
+  {}
+)(withStyles(styles)(Profile));

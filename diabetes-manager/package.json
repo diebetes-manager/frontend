@@ -10,6 +10,7 @@
     "axios": "^0.18.0",
     "canvasjs": "^1.8.1",
     "chart.js": "^2.8.0",
+    "material-ui": "^0.20.2",
     "plotly.js": "^1.47.1",
     "react": "^16.8.6",
     "react-chartjs-2": "^2.7.6",

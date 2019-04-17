@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Media from "react-media";
 import { Line } from "react-chartjs-2";
-
 import { getData } from "../../actions";
 
 class Dashboard extends Component {

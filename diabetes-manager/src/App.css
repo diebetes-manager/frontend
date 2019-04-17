@@ -5,6 +5,16 @@
 .nav {
   color: #fcfcfc;
 }
+.desktop Line:after {
+  content: "";
+  height: 85%;
+  width: 20px;
+  position: absolute;
+  display: block;
+  top: 32px;
+  left: 80%;
+  border-left: 3px dashed black;
+}
 
 .inputs input {
   border: 0;

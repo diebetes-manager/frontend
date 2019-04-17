@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Amplify from "aws-amplify";
-import awsmobile from "./aws-exports";
+//import Amplify from "aws-amplify";
+//import awsmobile from "./aws-exports";
 import { withAuthenticator } from "aws-amplify-react";
 import Media from "react-media";
 // components

@@ -51,10 +51,11 @@ class UpdateProfile extends Component {
     const { classes } = this.props;
     const { name, age, height, weight } = this.state;
     return (
-      <div className="center">
+      <div className="center inputs">
         <h1> Update Profile</h1>
         <form onSubmit={this.onSubmit}>
           <input
+            className="update-inputs"
             label="Name"
             name="name"
             placeholder={this.props.user.name}
@@ -62,6 +63,7 @@ class UpdateProfile extends Component {
             onChange={this.onChange}
           />
           <input
+            className="update-inputs"
             label="age"
             name="age"
             placeholder={this.props.user.age}
@@ -69,6 +71,7 @@ class UpdateProfile extends Component {
             onChange={this.onChange}
           />
           <input
+            className="update-inputs"
             label="height"
             name="height"
             placeholder={this.props.user.height}
@@ -76,6 +79,7 @@ class UpdateProfile extends Component {
             onChange={this.onChange}
           />
           <input
+            className="update-inputs"
             label="weight"
             name="weight"
             placeholder={this.props.user.weight}

@@ -27,15 +27,6 @@
   margin-right: 8px;
 }
 
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
-
 .box {
   height: 160px;
   border: 1px solid #2592f2;
@@ -143,7 +134,15 @@ button.MuiButtonBase-root-8.MuiButton-root-48.MuiButton-contained-59.MuiButton-c
   cursor: pointer;
 }
 
+.update-inputs {
+  margin-bottom: 55px;
+}
+
 @media screen and (min-width: 599px) {
+  .center {
+    left: 25%;
+    margin-top: 10rem;
+  }
   .header {
     padding-top: 56px;
   }

@@ -24,7 +24,6 @@ class Overview extends React.Component {
     return (
       <div>
         <h1>overview</h1>
-        // <Pie height={300} data={this.state.data} options={{}} />
       </div>
     );
   }

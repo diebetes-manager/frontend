@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
+import { updateUserInfo } from "../../actions";
+
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit
@@ -25,6 +27,23 @@ class UpdateProfile extends Component {
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+
+    const { name, age, height, weight } = this.state;
+
+    const updatedUser = {
+      name,
+      age,
+      height,
+      weight
+    };
+    const { id } = this.props.match.params;
+    this.props.updateUserInfo(updatedUser, id);
+
+    this.props.history.push("/profile");
   };
 
   render() {
@@ -81,5 +100,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  {}
+  { updateUserInfo }
 )(withStyles(styles)(UpdateProfile));

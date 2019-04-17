@@ -8,7 +8,13 @@ import {
 const intitalState = {
   updatingUserInfo: false,
   gettingUserInfo: false,
-  userInfo: {},
+  userInfo: {
+    id: 1,
+    name: "joseph rios",
+    age: 35,
+    height: "5 ft 9in",
+    weight: "140 lbs"
+  },
   overallData: [],
   overallSugarLevels: [],
   data: [],
@@ -21,7 +27,7 @@ export const dashboardReducers = (state = intitalState, action) => {
     case GETTING_USER_DATA:
       return {
         gettingUserInfo: true,
-        userInfo: { name: "joseph" }
+        ...state.userInfo
       };
     case SUCCESS_SUGAR_LEVELS:
       return {

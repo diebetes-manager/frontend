@@ -16,20 +16,11 @@ const styles = theme => ({
 class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: {
-        id: 1,
-        name: "joseph rios",
-        age: 35,
-        height: "5 ft 9in",
-        weight: "140 lbs"
-      }
-    };
   }
   render() {
     console.log(this.props.user);
     const { classes } = this.props;
-    const { name, age, height, weight, id } = this.state.user;
+    const { name, age, height, weight, id } = this.props.user;
     return (
       <div className="center">
         <h1>Profile</h1>

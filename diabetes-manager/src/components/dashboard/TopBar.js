@@ -1,9 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const styles = {
   root: {

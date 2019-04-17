@@ -32,7 +32,7 @@ export const getUser = id => async dispatch => {
   }
 };
 
-const updateUserInfo = (newUserInfo, id) => async dispatch => {
+export const updateUserInfo = (newUserInfo, id) => async dispatch => {
   try {
     const res = await axios.put(
       `https://arcane-woodland-11613.herokuapp.com/api/users/${id}`,

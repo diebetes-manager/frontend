@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getData } from "../../actions";
-import { Line, Pie } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 
 class Overview extends React.Component {
   constructor(props) {

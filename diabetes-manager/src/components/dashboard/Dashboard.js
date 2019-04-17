@@ -41,14 +41,18 @@ class Dashboard extends Component {
                   height={300}
                   data={this.state.data}
                   options={{ maintainAspectRatio: true }}
-                />
+                >
+                  <p>prediction</p>
+                </Line>
               ) : (
                 <Line
                   width={500}
                   height={300}
                   data={this.state.data}
                   options={{ maintainAspectRatio: false }}
-                />
+                >
+                  <p>prediction</p>
+                </Line>
               )
             }
           </Media>

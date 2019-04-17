@@ -5,13 +5,13 @@
 .nav {
   color: #fcfcfc;
 }
-.desktop Line:after {
+.desktop p:after {
   content: "";
-  height: 85%;
+  height: 27%;
   width: 20px;
   position: absolute;
   display: block;
-  top: 32px;
+  top: 110px;
   left: 80%;
   border-left: 3px dashed black;
 }
@@ -45,6 +45,16 @@
 @media screen and (min-width: 599px) {
   .header {
     padding-top: 56px;
+  }
+  .desktop p:after {
+    content: "";
+    height: 83%;
+    width: 20px;
+    position: absolute;
+    display: block;
+    top: 200px;
+    left: 64.8%;
+    border-left: 3px dashed black;
   }
   .desktop {
     margin: 50px;

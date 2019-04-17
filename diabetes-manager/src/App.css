@@ -6,6 +6,17 @@
   color: #fcfcfc;
 }
 
+.inputs input {
+  border: 0;
+  padding: 6px 0;
+  font-size: 1rem;
+  width: 240px;
+  outline: 0;
+  color: white;
+  border-bottom: 1px solid #2592f2;
+  margin-right: 8px;
+}
+
 .center {
   margin: 0;
   position: absolute;
@@ -36,6 +47,38 @@
     height: 350px;
     width: 300px;
     margin-bottom: 15px;
+  }
+  .flex {
+    margin-top: 10rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .profile,
+  .inputs {
+    border: 1px solid black;
+    width: 55rem;
+    height: 40rem;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+  }
+
+  .profile p {
+    font-size: 1.5rem;
+    margin-left: 5rem;
+    border: 1px solid black;
+    width: 40rem;
+    height: 3rem;
+  }
+
+  .profile .profile-btns {
+    margin-right: 5rem;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
   }
 }
 

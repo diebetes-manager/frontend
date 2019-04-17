@@ -57,28 +57,28 @@ class UpdateProfile extends Component {
           <input
             label="Name"
             name="name"
-            placeholder="Enter Name"
+            placeholder={this.props.user.name}
             value={name}
             onChange={this.onChange}
           />
           <input
             label="age"
             name="age"
-            placeholder="Enter age"
+            placeholder={this.props.user.age}
             value={age}
             onChange={this.onChange}
           />
           <input
             label="height"
             name="height"
-            placeholder="Enter height"
+            placeholder={this.props.user.height}
             value={height}
             onChange={this.onChange}
           />
           <input
             label="weight"
             name="weight"
-            placeholder="Enter weight"
+            placeholder={this.props.user.weight}
             value={weight}
             onChange={this.onChange}
           />

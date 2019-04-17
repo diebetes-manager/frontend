@@ -50,8 +50,9 @@ export const updateUserInfo = (newUserInfo, id) => async dispatch => {
   }
 };
 
-export const getData = () => dispatch => {
+export const getData = id => async dispatch => {
   try {
+    // const res = await axios.get(`http://localhost:3333/api/bloodsugar/${id}`)
     dispatch({
       type: SUCCESS_SUGAR_LEVELS,
       payload: data

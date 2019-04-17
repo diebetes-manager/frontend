@@ -34,13 +34,13 @@ export const getUser = id => async dispatch => {
 
 export const updateUserInfo = (newUserInfo, id) => async dispatch => {
   try {
-    const res = await axios.put(
-      `https://arcane-woodland-11613.herokuapp.com/api/users/${id}`,
-      newUserInfo
-    );
+    // const res = await axios.put(
+    //   `https://arcane-woodland-11613.herokuapp.com/api/users/${id}`,
+    //   newUserInfo
+    // );
     dispatch({
       type: UPDATING_USER_DATA,
-      payload: res.data
+      payload: newUserInfo
     });
   } catch (err) {
     dispatch({

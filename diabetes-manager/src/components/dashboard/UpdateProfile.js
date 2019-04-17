@@ -47,6 +47,7 @@ class UpdateProfile extends Component {
   };
 
   render() {
+    console.log(this.props.match.params.id);
     const { classes } = this.props;
     const { name, age, height, weight } = this.state;
     return (
@@ -81,15 +82,15 @@ class UpdateProfile extends Component {
             value={weight}
             onChange={this.onChange}
           />
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className={classes.button}
+          >
+            Submit Edit
+          </Button>
         </form>
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          className={classes.button}
-        >
-          Submit Edit
-        </Button>
       </div>
     );
   }

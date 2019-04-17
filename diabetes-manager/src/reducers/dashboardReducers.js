@@ -46,9 +46,9 @@ export const dashboardReducers = (state = intitalState, action) => {
       return {
         ...state,
         updateUserInfo: true,
-        userInfo: state.userInfo.map(user =>
-          user.id === action.payload.id ? (user = action.payload) : user
-        )
+        userInfo: action.payload //state.userInfo.map(user =>
+        //   user.id === action.payload.id ? (user = action.payload) : user
+        // )
       };
     default:
       return state;

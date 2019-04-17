@@ -12,6 +12,7 @@ import BottomNav from "./components/dashboard/BottomNav";
 import Health from "./components/dashboard/Health";
 import Overview from "./components/dashboard/Overview";
 import Profile from "./components/dashboard/Profile";
+import UpdateProfile from "./components/dashboard/UpdateProfile";
 
 // import PrivateRoute from "./components/private/PrivateRoute";
 
@@ -29,6 +30,7 @@ class App extends Component {
           <Route exact path="/health" component={Health} />
           <Route exact path="/overview" component={Overview} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/profile/:id" component={UpdateProfile} />
           <Media query="(max-width: 599px)">
             {matches => (matches ? <BottomNav /> : null)}
           </Media>

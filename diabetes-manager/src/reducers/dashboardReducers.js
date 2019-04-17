@@ -1,7 +1,8 @@
 import {
   GETTING_USER_DATA,
   SUCCESS_SUGAR_LEVELS,
-  SUCCESS_OVERALL_SUGAR_LEVELS
+  SUCCESS_OVERALL_SUGAR_LEVELS,
+  UPDATING_USER_DATA
 } from "../actions";
 
 const intitalState = {
@@ -34,6 +35,14 @@ export const dashboardReducers = (state = intitalState, action) => {
         ...state,
         overallData: action.payload,
         overallSugarLevels: action.payload.map(data => data.amount)
+      };
+    case UPDATING_USER_DATA:
+      return {
+        ...state,
+        updateUserInfo: true,
+        userInfo: state.userInfo.map(user =>
+          user.id === action.payload.id ? (user = action.payload) : user
+        )
       };
     default:
       return state;

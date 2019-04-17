@@ -11,6 +11,7 @@ export {
   SUCCESS_SUGAR_LEVELS,
   FAILURE_GETTING_SUGAR_LEVELS,
   SUCCESS_OVERALL_SUGAR_LEVELS,
+  UPDATING_USER_DATA,
   getUser,
   getData
 } from "./dashboardData";

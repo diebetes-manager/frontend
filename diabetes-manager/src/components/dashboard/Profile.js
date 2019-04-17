@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import DeleteIcon from "@material-ui/icons/Delete";
 
 const styles = theme => ({
   button: {
@@ -18,6 +18,7 @@ class Profile extends Component {
     super(props);
     this.state = {
       user: {
+        id: 1,
         name: "joseph rios",
         age: 35,
         height: "5 ft 9in",
@@ -28,7 +29,7 @@ class Profile extends Component {
   render() {
     console.log(this.props.user);
     const { classes } = this.props;
-    const { name, age, height, weight } = this.state.user;
+    const { name, age, height, weight, id } = this.state.user;
     return (
       <div className="center">
         <h1>Profile</h1>
@@ -37,7 +38,7 @@ class Profile extends Component {
         <p>height: {height}</p>
         <p>weight: {weight}</p>
         <Button variant="contained" color="primary" className={classes.button}>
-          Edit
+          <Link to={`profile/${id}`}>edit</Link>
         </Button>
         <Button
           variant="contained"
@@ -45,7 +46,6 @@ class Profile extends Component {
           className={classes.button}
         >
           Sign Out
-          <DeleteIcon className={classes.rightIcon} />
         </Button>
       </div>
     );

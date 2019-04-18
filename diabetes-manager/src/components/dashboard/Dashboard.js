@@ -6,7 +6,8 @@ import { getData } from "../../actions";
 
 class Dashboard extends Component {
   componentDidMount() {
-    this.props.getData();
+    const { id } = this.props.user;
+    this.props.getData(id);
   }
 
   constructor(props) {
@@ -28,8 +29,6 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log(this.props.data);
-    console.log(this.props.times);
     return (
       <div>
         <h1 className="header">Dashboard</h1>
@@ -77,7 +76,8 @@ class Dashboard extends Component {
 const mapStateToProps = state => ({
   data: state.dashboardReducers.bloodSugarLevels,
   times: state.dashboardReducers.times,
-  overallSugarLevels: state.dashboardReducers.overallSugarLevels
+  overallSugarLevels: state.dashboardReducers.overallSugarLevels,
+  user: state.dashboardReducers.userInfo
 });
 
 export default connect(

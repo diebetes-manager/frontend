@@ -11,6 +11,10 @@ export const FETCHING_SUGAR_LEVELS = "FETCHING_SUGAR_LEVELS";
 export const SUCCESS_SUGAR_LEVELS = "SUCCESS_SUGAR_LEVELS";
 export const SUCCESS_OVERALL_SUGAR_LEVELS = "SUCCESS_OVERALL_SUGAR_LEVELS";
 export const FAILURE_GETTING_SUGAR_LEVELS = "FAILURE_GETTING_SUGAR_LEVELS";
+export const SUCCESS_PREDICTIVE_SUGAR_LEVELS =
+  "SUCCESS_PREDICTIVE_SUGAR_LEVELS";
+export const FAILURE_GETTING_PREDICTIVE_SUGAR_LEVELS =
+  "FAILURE_GETTING_PREDICTIVE_SUGAR_LEVELS";
 
 export const getUser = id => async dispatch => {
   dispatch({
@@ -34,10 +38,10 @@ export const getUser = id => async dispatch => {
 
 export const updateUserInfo = (newUserInfo, id) => async dispatch => {
   try {
-    // const res = await axios.put(
-    //   `https://arcane-woodland-11613.herokuapp.com/api/users/${id}`,
-    //   newUserInfo
-    // );
+    const res = await axios.put(
+      `https://arcane-woodland-11613.herokuapp.com/api/users/${id}`,
+      newUserInfo
+    );
     dispatch({
       type: UPDATING_USER_DATA,
       payload: newUserInfo
@@ -52,7 +56,7 @@ export const updateUserInfo = (newUserInfo, id) => async dispatch => {
 
 export const getData = id => async dispatch => {
   try {
-    // const res = await axios.get(`http://localhost:3333/api/bloodsugar/${id}`)
+    const res = await axios.get(`http://localhost:3333/api/bloodsugar/${id}`);
     dispatch({
       type: SUCCESS_SUGAR_LEVELS,
       payload: data
@@ -64,6 +68,21 @@ export const getData = id => async dispatch => {
   } catch (err) {
     dispatch({
       type: FAILURE_GETTING_SUGAR_LEVELS,
+      payload: err
+    });
+  }
+};
+
+export const getPrediction = id => async dispatch => {
+  try {
+    const res = await axios.get(`http://localhost:3333/api/bloodsugar/${id}`);
+    dispatch({
+      type: SUCCESS_PREDICTIVE_SUGAR_LEVELS,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: FAILURE_GETTING_PREDICTIVE_SUGAR_LEVELS,
       payload: err
     });
   }

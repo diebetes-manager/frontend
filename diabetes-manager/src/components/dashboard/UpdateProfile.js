@@ -47,7 +47,6 @@ class UpdateProfile extends Component {
   };
 
   render() {
-    console.log(this.props.match.params.id);
     const { classes } = this.props;
     const { name, age, height, weight } = this.state;
     return (

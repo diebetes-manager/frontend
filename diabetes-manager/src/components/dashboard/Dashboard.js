@@ -29,6 +29,8 @@ class Dashboard extends Component {
   }
 
   render() {
+    const { prediction } = this.props.prediction;
+    console.log(prediction);
     return (
       <div>
         <h1 className="header">Dashboard</h1>
@@ -59,7 +61,7 @@ class Dashboard extends Component {
           <div className="side-panel">
             <h2>Current Status</h2>
             <div className="box">
-              <p>data goes here</p>
+              <p>Prediction: {prediction}</p>
             </div>
 
             <div className="box">
@@ -77,7 +79,8 @@ const mapStateToProps = state => ({
   data: state.dashboardReducers.bloodSugarLevels,
   times: state.dashboardReducers.times,
   overallSugarLevels: state.dashboardReducers.overallSugarLevels,
-  user: state.dashboardReducers.userInfo
+  user: state.dashboardReducers.userInfo,
+  prediction: state.dashboardReducers.prediction
 });
 
 export default connect(

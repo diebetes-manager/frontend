@@ -55,6 +55,9 @@ export const updateUserInfo = (newUserInfo, id) => async dispatch => {
 };
 
 export const getData = id => async dispatch => {
+  dispatch({
+    type: FETCHING_SUGAR_LEVELS
+  });
   try {
     const res = await axios.get(
       `https://glucose-iq.herokuapp.com/api/users/bloodsugar/${id}`

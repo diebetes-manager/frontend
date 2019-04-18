@@ -9,6 +9,7 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
+      OKToRender: false,
       data: {
         labels: [],
         datasets: [
@@ -25,30 +26,39 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
+    // console.log(this.props);
     const { id } = this.props.user;
     this.props.getData(id);
 
-    this.sortedDate();
-    const dataLength = this.state.data.datasets[0].data.length;
-    const data = this.state.data.datasets[0].data.slice(
-      dataLength - 8,
-      dataLength
-    );
-
-    this.setState({
-      data: {
-        labels: data.map(data => data.timestamp),
-        datasets: [
-          {
-            data: data.map(data => data.value)
-          }
-        ]
-      }
-    });
+    // console.log(this.props);
   }
 
-  sortedDate = () => {
-    this.state.data.datasets[0].data.sort(function(a, b) {
+  componentDidUpdate(prevProps) {
+    if (this.props.fetchingData !== prevProps.fetchingData) {
+      if (!this.props.fetchingData) {
+        // this.sortedDate();
+
+        const dataLength = this.props.data.length;
+        const sortedData = this.sortedDate(this.props.data);
+        const data = sortedData.slice(dataLength - 8, dataLength);
+        //this.state.data.datasets[0].data
+        this.setState({
+          OKToRender: true,
+          data: {
+            labels: data.map(data => data.timestamp),
+            datasets: [
+              {
+                data: data.map(data => data.value)
+              }
+            ]
+          }
+        });
+      }
+    }
+  }
+
+  sortedDate = dataToBeSorted => {
+    dataToBeSorted.sort(function(a, b) {
       const unxTimeStampA = Date.parse(a.timestamp);
       const unxTimeStampB = Date.parse(b.timestamp);
 
@@ -61,11 +71,14 @@ class Dashboard extends Component {
       // names must be equal
       return 0;
     });
+
+    return dataToBeSorted;
   };
 
   render() {
+    console.log(this.props);
     const { prediction } = this.props.prediction;
-
+    if (!this.state.OKToRender) return <h1> Loading...</h1>;
     return (
       <div>
         <h1 className="header">Dashboard</h1>
@@ -114,10 +127,9 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
+  fetchingData: state.dashboardReducers.fetchingData,
   data: state.dashboardReducers.allData,
-  bloodSugarLevels: state.dashboardReducers.bloodSugarLevels,
   times: state.dashboardReducers.times,
-  overallSugarLevels: state.dashboardReducers.overallSugarLevels,
   user: state.dashboardReducers.userInfo,
   prediction: state.dashboardReducers.prediction
 });

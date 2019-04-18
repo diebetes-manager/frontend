@@ -56,14 +56,13 @@ export const updateUserInfo = (newUserInfo, id) => async dispatch => {
 
 export const getData = id => async dispatch => {
   try {
-    const res = await axios.get(`http://localhost:3333/api/bloodsugar/${id}`);
+    const res = await axios.get(
+      `https://glucose-iq.herokuapp.com/api/users/bloodsugar/${id}`
+    );
+    console.log(res.data);
     dispatch({
       type: SUCCESS_SUGAR_LEVELS,
-      payload: data
-    });
-    dispatch({
-      type: SUCCESS_OVERALL_SUGAR_LEVELS,
-      payload: overallData
+      payload: res.data
     });
   } catch (err) {
     dispatch({

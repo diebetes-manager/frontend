@@ -59,7 +59,6 @@ export const getData = id => async dispatch => {
     const res = await axios.get(
       `https://glucose-iq.herokuapp.com/api/users/bloodsugar/${id}`
     );
-    console.log(res.data);
     dispatch({
       type: SUCCESS_SUGAR_LEVELS,
       payload: res.data

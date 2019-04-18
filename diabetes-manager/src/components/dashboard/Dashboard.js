@@ -5,17 +5,12 @@ import { Line } from "react-chartjs-2";
 import { getData } from "../../actions";
 
 class Dashboard extends Component {
-  componentDidMount() {
-    const { id } = this.props.user;
-    this.props.getData(id);
-  }
-
   constructor(props) {
     super(props);
 
     this.state = {
       data: {
-        labels: this.props.times,
+        labels: [],
         datasets: [
           {
             label: "Blood Sugar Levels",
@@ -28,9 +23,48 @@ class Dashboard extends Component {
     };
   }
 
+  componentDidMount() {
+    const { id } = this.props.user;
+    this.props.getData(id);
+
+    this.sortedDate();
+    const dataLength = this.state.data.datasets[0].data.length;
+    const data = this.state.data.datasets[0].data.slice(
+      dataLength - 8,
+      dataLength
+    );
+
+    this.setState({
+      data: {
+        labels: data.map(data => data.timestamp),
+        datasets: [
+          {
+            data: data.map(data => data.value)
+          }
+        ]
+      }
+    });
+  }
+
+  sortedDate = () => {
+    this.state.data.datasets[0].data.sort(function(a, b) {
+      const unxTimeStampA = Date.parse(a.timestamp);
+      const unxTimeStampB = Date.parse(b.timestamp);
+
+      if (unxTimeStampA < unxTimeStampB) {
+        return -1;
+      }
+      if (unxTimeStampA > unxTimeStampB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+  };
+
   render() {
     const { prediction } = this.props.prediction;
-    console.log(prediction);
+
     return (
       <div>
         <h1 className="header">Dashboard</h1>
@@ -76,7 +110,8 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.dashboardReducers.bloodSugarLevels,
+  data: state.dashboardReducers.allData,
+  bloodSugarLevels: state.dashboardReducers.bloodSugarLevels,
   times: state.dashboardReducers.times,
   overallSugarLevels: state.dashboardReducers.overallSugarLevels,
   user: state.dashboardReducers.userInfo,

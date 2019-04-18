@@ -17,7 +17,7 @@ const intitalState = {
   },
   overallData: [],
   overallSugarLevels: [],
-  data: [],
+  allData: [],
   bloodSugarLevels: [],
   times: [],
   prediction: []
@@ -33,9 +33,9 @@ export const dashboardReducers = (state = intitalState, action) => {
     case SUCCESS_SUGAR_LEVELS:
       return {
         ...state,
+        allData: action.payload,
         bloodSugarLevels: action.payload.map(data => data.value),
-        times: action.payload.map(data => data.timestamp),
-        prediction: action.payload.map(data => data.prediction)
+        times: action.payload.map(data => data.timestamp)
       };
     case SUCCESS_OVERALL_SUGAR_LEVELS:
       return {

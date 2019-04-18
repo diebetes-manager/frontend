@@ -26,7 +26,7 @@ class App extends Component {
           <Media query="(max-width: 599px)">
             {matches => (matches ? null : <TopBar />)}
           </Media>
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/" component={Dashboard} />
           <Route exact path="/health" component={Health} />
           <Route exact path="/overview" component={Overview} />
           <Route exact path="/profile" component={Profile} />

@@ -39,7 +39,7 @@ class BottomNav extends React.Component {
             value="home"
             icon={<i className="fas fa-home fa-2x nav" />}
             component={Link}
-            to="/dashboard"
+            to="/"
           />
           <BottomNavigationAction
             label="Overview"

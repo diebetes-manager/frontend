@@ -16,7 +16,8 @@ class Dashboard extends Component {
             label: "Blood Sugar Levels",
             data: this.props.data,
             fill: true, // Don't fill area under the line
-            borderColor: "#2592F2" // Line color
+            borderColor: "#2592F2", // Line color
+            backgroundColor: "#2592F2"
           }
         ]
       }
@@ -75,7 +76,10 @@ class Dashboard extends Component {
                 <Line
                   height={300}
                   data={this.state.data}
-                  options={{ maintainAspectRatio: true }}
+                  options={{
+                    maintainAspectRatio: true,
+                    borderColor: "#2592F2"
+                  }}
                 >
                   <p>prediction</p>
                 </Line>

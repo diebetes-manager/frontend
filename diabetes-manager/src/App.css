@@ -12,8 +12,8 @@
   position: absolute;
   display: block;
   top: 110px;
-  left: 80%;
-  border-left: 3px dashed black;
+  left: 99%;
+  border-left: 1px dashed black;
 }
 
 .inputs input {
@@ -148,12 +148,12 @@ button.MuiButtonBase-root-8.MuiButton-root-48.MuiButton-contained-59.MuiButton-c
   }
   .desktop p:after {
     content: "";
-    height: 83%;
+    height: 90%;
     width: 20px;
     position: absolute;
     display: block;
     top: 200px;
-    left: 64.8%;
+    left: 74%;
     border-left: 3px dashed black;
   }
   .desktop {

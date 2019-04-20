@@ -9,7 +9,7 @@ class Profile extends Component {
 
     return (
       <>
-        <h1>Profile</h1>
+        <h1 className='cgray'>Profile</h1>
         <section className='profile'>
         
           <div className='profile-card user'>
@@ -21,10 +21,10 @@ class Profile extends Component {
             </div>
             
             <div className='profile-btns'>
-              <button className='btn-secondary'>
+              <button className='btn-green'>
                 <Link to={`profile/${id}`}>Edit</Link>
               </button>
-              <button className='btn-danger'>Sign Out</button>
+              <button className='btn-gray'>Sign Out</button>
             </div>
 
           </div>
@@ -54,7 +54,7 @@ class Profile extends Component {
               <li>Wait a moment to receive your updated charts, projections, and more</li>
             </ul>
 
-            <button>Upload IBF from your computer</button>
+            <button className='btn-gray'>Upload IBF from your computer</button>
             
             <hr />
             
@@ -71,7 +71,7 @@ class Profile extends Component {
             
             <br />
             
-            <button className=''>CSV</button>
+            <button className='btn-gray'>CSV</button>
 
           </div>
 

@@ -1,29 +1,34 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import Media from "react-media";
-import { Line } from "react-chartjs-2";
+// import Media from "react-media";
+// import { Line } from "react-chartjs-2";
 import { getData } from "../state/actions/index.js";
+import Loader from 'react-loader-spinner'; 
+import {
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend
+} from 'recharts';
+import moment from 'moment';
 
 
-
-class Dashboard extends Component {
+class Dashboard extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       OKToRender: false,
-      data: {
-        labels: [],
-        datasets: [
-          {
-            label: "Blood Sugar Levels",
-            data: this.props.data,
-            fill: true, // Don't fill area under the line
-            borderColor: "#71CB2E", // Line color
-            backgroundColor: "#2592F2"
-          }
-        ]
-      }
+      // data: {
+      //   labels: [],
+      //   datasets: [
+      //     {
+      //       label: "Blood Sugar Levels",
+      //       data: this.props.allData,
+      //       fill: true, // Don't fill area under the line
+      //       borderColor: "#53616F", // Line color
+      //       backgroundColor: "#53616F"
+      //     }
+      //   ]
+      // },
+      sugarLevels: []
     };
   }
 
@@ -35,32 +40,33 @@ class Dashboard extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.fetchingData !== prevProps.fetchingData) {
       if (!this.props.fetchingData) {
-        // this.sortedDate();
 
-        const dataLength = this.props.data.length;
-        const sortedData = this.sortedDate(this.props.data);
-        const data = sortedData.slice(dataLength - 8, dataLength);
-        //this.state.data.datasets[0].data
-        this.setState({
-          OKToRender: true,
-          data: {
-            labels: data.map(data => data.timestamp),
-            datasets: [
-              {
-                data: data.map(data => data.value)
-              }
-            ]
+        const dataLength = this.props.allData.length;
+        const sortedData = this.sortedByDate(this.props.allData);
+        let recentData = sortedData.slice(dataLength - 8, dataLength);
+        const friendlyTimeArr = recentData.map(dataPoint => {
+          return {
+            ...dataPoint,
+            BSG_Value: dataPoint.value,
+            timestamp: moment(dataPoint.timestamp, 'YYYY-MM-DDTHH:mm:ss').format('LT'),
+            date: moment(dataPoint.timestamp, 'YYYY-MM-DDTHH:mm:ss').format('LL')
           }
+        })
+
+        this.setState({
+          ...this.state,
+          OKToRender: true,
+          sugarLevels: friendlyTimeArr
         });
+        console.log(friendlyTimeArr)
       }
     }
   }
 
-  sortedDate = dataToBeSorted => {
-    dataToBeSorted.sort(function(a, b) {
+  sortedByDate = dataToBeSorted => {
+    dataToBeSorted.sort((a, b) => {
       const unxTimeStampA = Date.parse(a.timestamp);
       const unxTimeStampB = Date.parse(b.timestamp);
-
       if (unxTimeStampA < unxTimeStampB) {
         return -1;
       }
@@ -69,17 +75,53 @@ class Dashboard extends Component {
       }
       return 0;
     });
-
     return dataToBeSorted;
   };
 
   render() {
-    if (!this.state.OKToRender) return <h1> Loading...</h1>;
+    if (!this.state.OKToRender) {
+      return (
+        <div className='loader-container'>
+          <Loader type="Bars" color="#53616F" height={80} width={80} />
+        </div>
+      )
+    };
     return (
       <>
         <section className="App desktop">
-        <h1 className="header">Dashboard</h1>
-          <div className='chart-container'> 
+          <h1 className="cgray header">Dashboard</h1>
+
+
+
+          <AreaChart
+            width={700}
+            height={600}
+            data={this.state.sugarLevels}
+            cursor={'crosshair'}
+            margin={{
+              top: 10, right: 30, left: 0, bottom: 0,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey='timestamp' />
+            <YAxis />
+            <Tooltip />
+            {/* <Legend 
+              width={100} 
+              wrapperStyle={{ top: 0, right: 0, backgroundColor: '#f5f5f5', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '40px' }} 
+            /> */}
+            <Area type="monotone" dataKey="BSG_Value" stackId="3" stroke="#2592F2" fill="#64B2F6" fillOpacity='1' />
+            <Area type="monotone" dataKey="date" stackId="1" stroke="#7b8ea1" fill="#7b8ea1" fillOpacity='0' />
+            <Area type="monotone" dataKey="prediction" stackId="1" stroke="#FCFCFC" fill="#7b8ea1" fillOpacity='0.7' />
+          </AreaChart>
+
+
+
+
+
+
+
+          {/* <div className='chart-container'> 
             <Media query="(max-width: 599px)">
               {matches =>
                 matches ? (
@@ -107,7 +149,8 @@ class Dashboard extends Component {
                 )
               }
             </Media>
-          </div>
+          </div> */}
+          
           <section className="side-panel">
             
             <h4>Current Status</h4>
@@ -125,7 +168,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   fetchingData: state.dashboardReducers.fetchingData,
-  data: state.dashboardReducers.allData,
+  allData: state.dashboardReducers.allData,
   times: state.dashboardReducers.times,
   user: state.dashboardReducers.userInfo,
   prediction: state.dashboardReducers.prediction

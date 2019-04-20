@@ -9,27 +9,6 @@
         display: flex;
         justify-content: center;
     }
-    
-    p {
-        &:after {
-            content: "";
-            height: 27%;
-            width: 20px;
-            position: absolute;
-            display: block;
-            top: 110px;
-            left: 99%;
-            border-left: 1px dashed black;
-        }
-        @include medium() {
-            &:after {
-                height: 90%;
-                top: 200px;
-                left: 74%;
-                border-left: 3px dashed black;
-            }
-        }
-    }
     .chart-container {
         height: 100%;
         margin: 0 0 20px 0;
@@ -44,8 +23,21 @@
             width: 50%;
         }
     } 
-}
 
+    .recharts-wrapper {
+        // width: 100% !important;
+        // max-width: 800px;
+        height: unset !important;
+        width: unset !important;
+        display: flex;
+        .recharts-surface {
+            width: 90%;
+            margin: 0 auto;
+            cursor: crosshair;
+
+        }
+    }
+}
 
 
 

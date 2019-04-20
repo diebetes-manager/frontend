@@ -30,6 +30,7 @@ $primary-light: #64B2F6;
 $highlight-dark: #71CB2E;
 $mono-dark: #020207;
 $mono-medium: #53616F;
+$mono-gray: #7b8ea1;
 $mono-light: #FCFCFC;
 
 
@@ -53,10 +54,10 @@ $links: $white;
 
 
 // CSS Color definitions
-.cltgray { color: $light-gray; }
-.cgray { color: $gray; }
+.cltgray { color: $mono-gray; }
+.cgray { color: $mono-gray; }
 .cred { color: $red; }
-.cblack { color: $black; }
+.cblack { color: $mono-dark; }
 
 
 // Breakpoints
@@ -132,18 +133,22 @@ $links: $white;
   }
 }
 .btn-gray { 
-  background-color: $gray; 
-  color: $dark; 
+  background-color: $mono-gray; 
+  color: $white; 
+  &:hover {
+    background-color: $mono-gray/2;
+    transition-duration: 0.5s;
+  }
 }
 .btn-clear { 
   background-color: $clear-color; 
   color: $white; 
 }
 .btn-green { 
-  background-color: $green; 
+  background-color: $highlight-dark; 
   color: $white; 
   &:hover {
-    background-color: $green/2;
+    background-color: $highlight-dark/2;
     transition-duration: 0.5s;
   }
 }
@@ -182,7 +187,7 @@ $links: $white;
 }
 
 .btn-dark {
-  background-color: $dark; 
+  background-color: $mono-dark; 
   color: $white; 
   &:hover {
     background-color: $dark*2;

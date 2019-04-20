@@ -11,10 +11,10 @@
     min-height: 500px;
     position: relative;
     @include medium() {
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      margin-bottom: 25px;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        margin-bottom: 25px;
     }
     .profile-card {
         border: none;
@@ -41,18 +41,19 @@
         }
         .profile-btns {
             width: 100%;
-            @include medium() {
-                width: 100%;
-            }
         }
-        input {
-            margin: 0 0 10px 0;
+        title {
+            margin: 10px 0 0 0;
         }
     }
     .profile-card.user {
         box-shadow: none;
         display: flex;
+        .profile-user {
+            width: 80%;
+        }
         .profile-btns {
+            width: 20%;
             display: flex;
             justify-content: right;
             flex-shrink: 10;

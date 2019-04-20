@@ -1,0 +1,70 @@
+.profile {
+    flex-wrap: wrap;
+    height: auto;
+    padding-bottom: 100px;
+    padding: 30px;
+    margin-top: 0;
+    border: none;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    min-height: 500px;
+    position: relative;
+    @include medium() {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-bottom: 25px;
+    }
+    .profile-card {
+        border: none;
+        margin-bottom: 15px;
+        padding: 30px;
+        @include box-shadow;
+        h5 {
+            text-align: left;
+        }
+        p {
+            border: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            text-align: left;
+            @include medium() {
+                font-size: 1.5rem;
+                height: 3rem;
+            }
+        }
+        ul {
+            list-style: decimal inside;
+            text-align: left;
+        }
+        .profile-btns {
+            width: 100%;
+            @include medium() {
+                width: 100%;
+            }
+        }
+        input {
+            margin: 0 0 10px 0;
+        }
+    }
+    .profile-card.user {
+        box-shadow: none;
+        display: flex;
+        .profile-btns {
+            display: flex;
+            justify-content: right;
+            flex-shrink: 10;
+            flex-flow: column;
+            button {
+                margin: 0 0 10px 0;
+                width: 100%;
+                max-width: 100px;
+                align-self: flex-end;
+            }
+        }
+
+    }
+}
+

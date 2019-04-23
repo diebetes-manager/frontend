@@ -65,17 +65,7 @@ input {
   font-size: 1.8rem;
 }
 
-.box {
-  border: none;
-  margin-bottom: 15px;
-  padding: 30px;
-  width: 80%;
-  @include box-shadow;
-  @include medium() {
-    width: 100%;
-    max-width: 800px;
-  }
-}
+
 
 .loader-container {
   top: 25vh;

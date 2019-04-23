@@ -3,7 +3,7 @@
     height: auto;
     padding-bottom: 100px;
     padding: 30px;
-    margin-top: 0;
+    margin: 0 auto 10% auto;
     border: none;
     width: 100%;
     max-width: 800px;
@@ -13,7 +13,6 @@
     @include medium() {
         width: 100%;
         max-width: 800px;
-        margin: 0 auto;
         margin-bottom: 25px;
     }
     .profile-card {

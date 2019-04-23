@@ -4,37 +4,60 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 // import awsmobile from "./aws-exports";
 // import { withAuthenticator } from "aws-amplify-react";
 import Media from "react-media";
+
 // components
-// import Login from "./components/login/Login";
-import Dashboard from "./components/dashboard/Dashboard";
-import TopBar from "./components/dashboard/TopBar";
-import BottomNav from "./components/dashboard/BottomNav";
-import Health from "./components/dashboard/Health";
-import Overview from "./components/dashboard/Overview";
-import Profile from "./components/dashboard/Profile";
-import UpdateProfile from "./components/dashboard/UpdateProfile";
+import Dashboard from "./components/Dashboard";
+import TopBar from "./components/TopBar";
+import BottomNav from "./components/BottomNav";
+import Overview from "./components/Overview";
+import Profile from "./components/Profile";
+import UpdateProfile from "./components/UpdateProfile";
 
-// import PrivateRoute from "./components/private/PrivateRoute";
 
-import "./App.css";
 
 class App extends Component {
+
   render() {
     return (
       <Router>
-        <div className="App">
+        <section className="App">
           <Media query="(max-width: 599px)">
             {matches => (matches ? null : <TopBar />)}
           </Media>
-          <Route exact path="/" component={Dashboard} />
-          <Route exact path="/health" component={Health} />
-          <Route exact path="/overview" component={Overview} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/profile/:id" component={UpdateProfile} />
+
+          <Route 
+            exact 
+            path="/" 
+            render={() => (
+              <Dashboard />
+            )}
+          />
+          <Route 
+            exact 
+            path="/overview" 
+            render={() => (
+              <Overview />
+            )}
+          />
+          <Route 
+            exact 
+            path="/profile" 
+            render={() => (
+              <Profile />
+            )}
+          />
+          <Route 
+            exact 
+            path="/profile/:id" 
+            render={() => (
+              <UpdateProfile />
+            )}
+          />
+
           <Media query="(max-width: 599px)">
             {matches => (matches ? <BottomNav /> : null)}
           </Media>
-        </div>
+        </section>
       </Router>
     );
   }

@@ -1,7 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getData } from "../../actions";
-import { Pie } from "react-chartjs-2";
+import { getData } from "../state/actions";
+import { 
+  // Pie 
+} from "react-chartjs-2";
+
+
 
 class Overview extends React.Component {
   constructor(props) {
@@ -22,9 +26,9 @@ class Overview extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h1>overview</h1>
-      </div>
+      <>
+        <h1 className='cgray'>Overview</h1>
+      </>
     );
   }
 }

@@ -1,0 +1,293 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro);
+
+// Gradients 
+@mixin bg-gradient2($bg-gradient-direction, $bg-gradient-a, $bg-gradient-b) {
+  background: linear-gradient($bg-gradient-direction, $bg-gradient-a, $bg-gradient-b);
+};
+@mixin bg-gradient3($bg-gradient-direction, $bg-gradient-a, $bg-gradient-b, $bg-gradient-c) {
+  background: linear-gradient($bg-gradient-direction, $bg-gradient-a, $bg-gradient-b, $bg-gradient-c);
+};
+
+// Color Vars
+$clear-color: rgba(255,255,255,0.15);
+$white: #FCFCFC;
+$light: #f2f2f2;
+$light-gray: rgba(55,55,55,0.5);
+$gray: #999999;
+$dark: #53616F;
+$black: #020207;
+$danger: #b63737;
+$red: #dd1111;
+$dark-red: #a00000;
+$green: #38c46d;
+$teal: rgba(80, 201, 195, 1.0);
+$light-bronze: #ada996;
+$lighter-gray: #dbdbdb;
+$gray-white:#eaeaea;
+
+$primary-dark: #2592F2;
+$primary-light: #64B2F6;
+$highlight-dark: #71CB2E;
+$mono-dark: #020207;
+$mono-medium: #53616F;
+$mono-gray: #7b8ea1;
+$mono-light: #FCFCFC;
+
+
+// Color pointers
+$nav-bg: $dark;
+$nav-font: $white;
+$nav-border: $black;
+
+$header-font-color: $dark;
+$header-bg-color: $white;
+$main-font-color: $dark;
+$bg-color: $white;
+
+$footer-background: $dark;
+$footer-font-color: $white;
+
+$button-bg-color: $primary-dark;
+$border-real: $dark;
+
+$links: $white;
+
+
+// CSS Color definitions
+.cltgray { color: $mono-gray; }
+.cgray { color: $mono-gray; }
+.cred { color: $red; }
+.cblack { color: $mono-dark; }
+
+
+// Breakpoints
+@mixin phone-small() {
+  @media only screen and (min-width: 0px) and (max-width: 350px) {
+    @content;
+  }
+}
+@mixin phone() {
+  @media only screen and (min-width: 0px) and (max-width: 600px) {
+    @content;
+  }
+} 
+@mixin medium() {
+  @media only screen and (min-width: 601px) and (max-width: 820px) {
+    @content;
+  }
+}
+@mixin large() {
+  @media only screen and (min-width: 821px) {
+    @content;
+  }
+}
+
+
+// Transition duration
+@mixin transition($duration: 0.5s) {
+  -webkit-transition-duration: $duration;
+  -moz-transition-duration: $duration;
+  transition-duration: $duration;
+}
+
+
+// Border
+@mixin border-radius($tl: 3px, $tr: $tl, $bl: 3px, $br: $bl) {
+  border-radius: $tl $tr $bl $br;
+}
+@mixin border-left-style($border-style-width: 5px, $border-style-color: $luncher-saddle) {
+  border-left: $border-style-width solid $border-style-color;
+  padding-right: $border-style-width * 2;
+}
+@mixin border-style($border-style-width: 5px, $border-style: solid, $border-style-color: $luncher-saddle) {
+  border: $border-style-width $border-style $border-style-color;
+}
+
+// Horizontal RuLeZ
+@mixin hr-style($hr-margin:20px auto 30px auto, $hr-border-style:1px solid $light-gray) {
+  margin: $hr-margin;
+  border: $hr-border-style;
+}
+
+// Buttons
+@mixin btn ( $btn-bg-color: $button-bg-color, $btn-color: $white) {
+  background-color: $btn-bg-color;
+  color: $btn-color;
+  border-radius: 0;
+  font-size: 1.8rem;
+  font-weight: bolder;
+  text-align: center;
+  width: 50%;
+  min-width: 100px;
+  padding: 8px 10px;
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover{
+    background-color: $btn-bg-color/2;
+    color: $btn-color;
+    @include transition(0.75s);
+  }
+  @include phone {
+    width: 70%;
+  }
+}
+.btn-gray { 
+  background-color: $mono-gray; 
+  color: $white; 
+  &:hover {
+    background-color: $mono-gray/2;
+    transition-duration: 0.5s;
+  }
+}
+.btn-clear { 
+  background-color: $clear-color; 
+  color: $white; 
+}
+.btn-green { 
+  background-color: $highlight-dark; 
+  color: $white; 
+  &:hover {
+    background-color: $highlight-dark/2;
+    transition-duration: 0.5s;
+  }
+}
+.btn-red { 
+  background-color: $dark-red; 
+  color: $white; 
+  &:hover {
+    background-color: $dark-red/2;
+    transition-duration: 0.5s;
+  }
+}
+.btn-danger {
+  background-color: $danger;
+  color: $white; 
+  &:hover {
+    background-color: $danger/2;
+    transition-duration: 0.5s;
+  }
+}
+.btn-primary { 
+  background-color: $primary-dark; 
+  color: $white; 
+  &:hover {
+    background-color: $primary-dark/2;
+    transition-duration: 0.5s;
+  }
+}
+
+.btn-secondary { 
+  background-color: $primary-light; 
+  color: $white; 
+  &:hover {
+    background-color: $primary-light/2;
+    transition-duration: 0.5s;
+  }
+}
+
+.btn-dark {
+  background-color: $mono-dark; 
+  color: $white; 
+  &:hover {
+    background-color: $dark*2;
+    transition-duration: 0.5s;
+  }
+}
+
+
+// Form Input
+@mixin form-outline($outline-color: $red, $outline-width: 2px, $transition-duration: 0.5s) {
+  &:focus {
+    outline-color: $outline-color;
+    outline-width: $outline-width;
+    outline-style: auto;
+    outline-offset: -3px;
+    @include transition($transition-duration);
+  }  
+}
+
+// Links
+@mixin link($link-fg-color, $link-bg-color, $link-bold: 600) {
+  color: $link-fg-color;
+  background-color: unset;
+  font-weight: $link-bold;
+  text-decoration: none;
+  &:hover {
+    color: $link-bg-color;
+    background-color: $link-fg-color;
+    font-weight: $link-bold;
+    @include border-radius(10px, 10px, 0, 0);
+    @include transition(0.75s);
+    @include phone {
+      @include border-radius(5px, 5px, 0, 0);
+    }
+    @include phone-small {
+      @include border-radius(0, 0, 0, 0);
+      letter-spacing: 0.75rem;
+    }
+  }
+}
+a { 
+  color: $links;
+  text-decoration: none;
+  &:hover {
+    color: $primary-light;
+    @include transition;
+  }
+}
+
+// Positioning
+@mixin sticky-top($top-pos) {
+  position: sticky;
+  top: $top-pos;
+}
+
+// Fonts
+@mixin font-body($weight: 400) {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: $weight;
+  font-size: 1.6rem;
+}
+@mixin font-title($weight: 300) {
+  font-family: 'Source Sans', sans-serif;
+  font-weight: $weight;
+}
+@mixin font-logo {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  line-height: 1.25;
+  font-size: 3rem;
+}
+
+body, p { @include font-body; }
+
+h1, .h1 { @include font-logo; }
+h2, .h2 { @include font-title; font-size: 3.4rem; }
+h3, .h3 { @include font-title; font-size: 3rem; }
+h4, .h4 { @include font-title; font-size: 2.6rem; }
+h5, .h5 { @include font-title; font-size: 2.2rem; }
+h6, .h6 { @include font-title; font-size: 1.8rem; }
+
+
+
+// Shadows
+@mixin font-shadow($font-shadow-x: 1px, $font-shadow-y: 1px, $font-shadow-blur: 5px, $font-shadow-color: $black) {
+  text-shadow: $font-shadow-x $font-shadow-y $font-shadow-blur $font-shadow-color;
+}
+@mixin box-shadow($box-shadow-x: 1px, $box-shadow-y: 4px, $box-shadow-blur: 15px, $box-shadow-spread: 1px, $box-shadow-color: $gray) {
+  box-shadow: $box-shadow-x $box-shadow-y $box-shadow-blur $box-shadow-spread $box-shadow-color;
+}
+
+// Dynamic styling
+.completed {
+  text-decoration-line: line-through;
+  font-style: italic;
+  color: $light-gray;
+}
+
+.display-none { 
+  display: none; 
+  @include transition(0.5s) 
+}
+

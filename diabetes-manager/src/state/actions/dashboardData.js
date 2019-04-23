@@ -1,5 +1,5 @@
-import { data } from "../3h_bloodsugar";
-import { overallData } from "../7day_bloodsugar";
+// import { data } from "../3h_bloodsugar";
+// import { overallData } from "../7day_bloodsugar";
 import axios from "axios";
 
 export const FETCHING_USER_DATA = "FETCHING_USER_DATA";
@@ -16,13 +16,15 @@ export const SUCCESS_PREDICTIVE_SUGAR_LEVELS =
 export const FAILURE_GETTING_PREDICTIVE_SUGAR_LEVELS =
   "FAILURE_GETTING_PREDICTIVE_SUGAR_LEVELS";
 
+
+  
 export const getUser = id => async dispatch => {
   dispatch({
     type: FETCHING_USER_DATA
   });
   try {
     const res = await axios.get(
-      `https://arcane-woodland-11613.herokuapp.com/api/users/${id}`
+      `https://glucose-iq.herokuapp.com/api/users/${id}`
     );
     dispatch({
       type: GETTING_USER_DATA,
@@ -39,7 +41,7 @@ export const getUser = id => async dispatch => {
 export const updateUserInfo = (newUserInfo, id) => async dispatch => {
   try {
     // const res = await axios.put(
-    //   `https://arcane-woodland-11613.herokuapp.com/api/users/${id}`,
+    //   `https://glucose-iq.herokuapp.com/api/users/${id}`,
     //   newUserInfo
     // );
     dispatch({
@@ -76,10 +78,10 @@ export const getData = id => async dispatch => {
 
 export const getPrediction = id => async dispatch => {
   try {
-    const res = await axios.get(`http://localhost:3333/api/bloodsugar/${id}`);
+    const res = await axios.get(`https://glucose-iq.herokuapp.com/api/users/bloodsugar/${id}`);
     dispatch({
       type: SUCCESS_PREDICTIVE_SUGAR_LEVELS,
-      payload: data
+      payload: res.data
     });
   } catch (err) {
     dispatch({

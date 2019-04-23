@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
-import { updateUserInfo } from "../../actions";
+import { updateUserInfo } from "../state/actions/index.js";
+
+
 
 const styles = theme => ({
   button: {
